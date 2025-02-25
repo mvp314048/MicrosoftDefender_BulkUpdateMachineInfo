@@ -1,0 +1,5 @@
+DeviceNetworkInfo 
+| join DeviceInfo on $left.DeviceId == $right.DeviceId
+| where  IPAddresses contains "192.168.1"
+| where Timestamp >ago(1d)
+| summarize by DeviceId, DeviceName, DeviceManualTags, IPAddresses, OnboardingStatus

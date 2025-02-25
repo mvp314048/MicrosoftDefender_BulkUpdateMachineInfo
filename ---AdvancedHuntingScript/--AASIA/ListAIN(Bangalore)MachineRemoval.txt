@@ -1,0 +1,5 @@
+DeviceNetworkInfo 
+| join DeviceInfo on $left.DeviceId == $right.DeviceId
+| where DeviceManualTags has "AIN(Bangalore)"
+| where Timestamp >ago(365d)
+| summarize by DeviceId, DeviceName, IPAddresses, DeviceManualTags
